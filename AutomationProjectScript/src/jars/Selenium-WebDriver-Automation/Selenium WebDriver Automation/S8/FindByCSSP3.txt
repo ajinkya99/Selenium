@@ -1,0 +1,27 @@
+package basicweb;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class FindByCSSP3 {
+
+	public static void main(String[] args) throws Exception {
+		WebDriver driver;
+		driver = new FirefoxDriver();
+		
+		String baseURL = "http://demostore.x-cart.com/apple-iphone-6-16gb.html";
+		driver.manage().window().maximize();
+		driver.get(baseURL);
+		
+		// "#" - id and "." - class
+		// There are some issues on the website since the Add to Cart button
+		// I am 1st entering data in the quantiy text field to bring it in view and give it some time
+		// These are public websites, so we don't have control on them, we just need to understand the concepts
+		// so that we can apply when we need them
+		driver.findElement(By.id("amount37")).clear();
+		driver.findElement(By.id("amount37")).sendKeys("1");
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector(".btn.add2cart.submit")).click();
+	}
+}

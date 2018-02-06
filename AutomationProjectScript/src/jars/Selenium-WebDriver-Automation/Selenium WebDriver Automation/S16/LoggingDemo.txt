@@ -1,0 +1,52 @@
+package tutorialselenium;
+
+import org.apache.log4j.*;
+import java.util.Properties;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.*;
+
+/**
+ * Trace
+ * Debug
+ * Info
+ * Warn
+ * Error
+ * Fatal
+ * VM Argument: -Dlog4j.debug=true
+ */
+public class LoggingDemo {
+
+	static Logger log = Logger.getLogger(LoggingDemo.class);
+	static Appender append;
+
+	@Before
+	public void setUp() throws Exception {	  
+	    // Define Appender
+		append = new ConsoleAppender(new SimpleLayout());
+	    log.addAppender(append);
+	    
+		// BasicConfigurator.configure();
+		Properties log4jprop = new Properties();
+		log4jprop.setProperty("log4j.rootlogger", "DEBUG, CA");
+		log4jprop.setProperty("log4j.appender.CA", "org.apache.log4j.ConsoleAppender");
+		log4jprop.setProperty("log4j.appender.CA.layout", "org.apache.log4j.PatternLayout");
+		log4jprop.setProperty("log4j.appender.CA.layout.CoversionPattern", "%d{yyyy-MM-dd} -- %-10p %c - %m%n");
+		
+		PropertyConfigurator.configure(log4jprop);
+		log.info("Running before method");
+	}
+
+	@Test
+	public void testLog4j() throws Exception {
+		log.info("Running test method");
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		log.info("Running after method");
+	}
+}

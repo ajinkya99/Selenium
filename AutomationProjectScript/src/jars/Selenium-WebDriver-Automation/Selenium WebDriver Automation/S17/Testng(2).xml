@@ -1,0 +1,15 @@
+<suite name="TestSuite">
+<test name="FireFox Test">
+<parameter name="origin" value="New York" />
+<parameter name="dest" value="Chicago" />
+<parameter name="depDate" value="10/28/2014" />
+<parameter name="retDate" value="10/31/2014" />
+	<classes>
+		<class name="tutorial.selenium.TestNG_ParametersAndDataProviders">
+		<methods>
+			<include name="searchFlightsWithMultiData" />
+		</methods>
+		</class>
+	</classes>
+</test>
+</suite>
